@@ -6,7 +6,7 @@
     </head>
     <body>
         <header>
-            <h1>Projet</h1>
+            <h1>Projet 1</h1>
         </header>
         <nav>
             <ul class="nav-bar">
