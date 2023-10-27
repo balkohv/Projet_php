@@ -11,7 +11,7 @@
         <nav>
             <ul class="nav-bar">
                 <li><a href="index.php">Accueil</a></li>
-                <li><a href="index.php?page=contact">Contact</a></li>
+                <li><a href="index.php?page=contact">rdv</a></li>
                 <li><a href="index.php?page=inscription">Inscription</a></li>
                 <li><a href="index.php?page=connexion">Connexion</a></li>
             </ul>
