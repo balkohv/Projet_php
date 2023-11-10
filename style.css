@@ -43,3 +43,14 @@ nav{
     text-decoration: none;
     color: #000;
 }
+
+.form{
+    display: inline-grid;
+    justify-content: center;
+    margin-top: 5vh;
+
+}
+
+.col-12{
+    width: 100vw;
+}
