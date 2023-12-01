@@ -14,7 +14,6 @@
         $req1->execute(array(
             'id_medecin' => $_POST['id_medecin'],
         ));
-        var_dump($req1->fetchAll());
     }else{
         $req1 = $conn->prepare('SELECT * FROM rdv WHERE id_medecin = :id_medecin AND date_rdv != :date_rdv');
         $req1->execute(array(
@@ -22,7 +21,6 @@
             'date_rdv' => $_POST['date_rdv_og'],
         ));
     }
-    var_dump($_POST);
     $res="0";
     $rdvs = $req1->fetchAll();
     $rdv_date=new DateTime($_POST['date_rdv']);
@@ -41,8 +39,10 @@
         $date_rdv_2_fin->modify('+' . explode(":",$rdv['duree'])[0] . ' hours');
         $date_rdv_2_fin->modify('+' . explode(":",$rdv['duree'])[1] . ' minutes');
         $date_rdv_2_fin=$date_rdv_2_fin->format('Y-m-d H:i:s');
-        
-        if(($rdv['date_rdv']<$rdv_date and $rdv_date<$date_rdv_2_fin) or ($rdv['date_rdv']<$date_rdv_1_fin and $date_rdv_1_fin<$date_rdv_2_fin) or ($rdv['date_rdv']>$date_rdv and $date_rdv_1_fin>$date_rdv_2_fin)){
+        if(($rdv['date_rdv']<$rdv_date and $rdv_date<$date_rdv_2_fin) or 
+            ($rdv['date_rdv']<$date_rdv_1_fin and $date_rdv_1_fin<$date_rdv_2_fin) or 
+            ($rdv['date_rdv']>$rdv_date and $date_rdv_1_fin>$date_rdv_2_fin)){
+
             $res = "1";
         }
     }

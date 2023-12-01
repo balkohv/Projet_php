@@ -232,7 +232,7 @@ form>.col-4{
 
 .RdvEnCours{
     background-color: #cf18c0;
-    height: 3vh;
+    height: 20px;
 }
 
 .row>.tdrdv ~ .tdrdv>.RdvEnCours{
