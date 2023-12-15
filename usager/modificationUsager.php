@@ -28,6 +28,7 @@ if(!isset($_GET['id']) and !isset($_POST['id'])){
         $id = $_POST['id'];
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
+        $civilite = $_POST['civilite'];
         $cp = $_POST['cp'];
         $ville = $_POST['ville'];
         $adresse = $_POST['adresse'];
@@ -39,7 +40,7 @@ if(!isset($_GET['id']) and !isset($_POST['id'])){
         }else{
             $id_medecin=NULL;
         }
-        $req1 = $conn->prepare('UPDATE usager set num_secu = :num_secu, nom = :nom, prenom = :prenom, cp = :cp, ville = :ville, adresse = :adresse, date_naissance = :date_naissance, lieu_naissance = :lieu_naissance, id_medecin = :id_medecin where id_usager = :id');
+        $req1 = $conn->prepare('UPDATE usager set num_secu = :num_secu, nom = :nom, prenom = :prenom,civilite = :civilite, cp = :cp, ville = :ville, adresse = :adresse, date_naissance = :date_naissance, lieu_naissance = :lieu_naissance, id_medecin = :id_medecin where id_usager = :id');
 
             if (!$req1){
                 die('Erreur : ' . $req1.errorInfo());
@@ -49,6 +50,7 @@ if(!isset($_GET['id']) and !isset($_POST['id'])){
                 'num_secu' => $num_secu,
                 'nom' => $nom,
                 'prenom' => $prenom,
+                'civilite' => $civilite,
                 'cp' => $cp,
                 'ville' => $ville,
                 'adresse' => $adresse,
@@ -88,6 +90,11 @@ if(!isset($_GET['id']) and !isset($_POST['id'])){
                             <input type="text" name="nom" id="nom" value="<?= $usager['nom'] ?>" required>
                             <label for="prenom">Prénom</label>
                             <input type="text" name="prenom" id="prenom" value="<?= $usager['prenom'] ?>" required>
+                            <label for="civilite">Civilité</label>
+                            <select name="civilite" id="civilite">
+                                <option value="M" <?php if($usager['civilite'] == "M"){echo 'selected';}?>>M</option>
+                                <option value="Mme" <?php if($usager['civilite'] == "Mme"){echo 'selected';}?>>Mme</option>
+                            </select>
                             <label for="adresse">adresse</label>
                             <input type="text" name="adresse" id="adresse" value="<?= $usager['adresse'] ?>" required>
                             <label for="cp">Code postal</label>

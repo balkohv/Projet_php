@@ -11,6 +11,7 @@
 if(isset($_POST['nom'])){
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
+    $civilite = $_POST['civilite'];
     $adresse = $_POST['adresse'];
     $CP = $_POST['CP'];
     $ville = $_POST['ville'];
@@ -22,7 +23,7 @@ if(isset($_POST['nom'])){
     }else{
         $medecin=NULL;
     }
-    $req1 = $conn->prepare('INSERT INTO usager(num_secu, nom, prenom, cp, ville, adresse, date_naissance, lieu_naissance, id_medecin) VALUES(:num_secu, :nom, :prenom, :cp, :ville, :adresse, :date_naissance, :lieu_naissance, :id_medecin)');
+    $req1 = $conn->prepare('INSERT INTO usager(num_secu, nom, prenom,civilite, cp, ville, adresse, date_naissance, lieu_naissance, id_medecin) VALUES(:num_secu, :nom, :prenom, :civilite, :cp, :ville, :adresse, :date_naissance, :lieu_naissance, :id_medecin)');
 
         if (!$req1){
             die('Erreur : ' . $req1.errorInfo());
@@ -32,6 +33,7 @@ if(isset($_POST['nom'])){
             'num_secu' => $secu,
             'nom' => $nom,
             'prenom' => $prenom,
+            'civilite' => $civilite,
             'cp' => $CP,
             'ville' => $ville,
             'adresse' => $adresse,
@@ -69,7 +71,12 @@ if(isset($_POST['nom'])){
                             <label for="nom">Nom</label>
                             <input type="text" name="nom" id="nom" required>
                             <label for="prenom">Prénom</label>
-                            <input type="text" name="prenom" id="prenom" required>
+                            <input type="text" name="nom" id="nom" required>
+                            <label for="prenom">Civilité</label>
+                            <select name="civilite" id="civilite">
+                                <option value="M">M</option>
+                                <option value="Mme">Mme</option>
+                            </select>
                             <label for="adresse">adresse</label>
                             <input type="text" name="adresse" id="adresse" required>
                             <label for="CP">Code postal</label>
