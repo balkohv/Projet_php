@@ -92,7 +92,7 @@ if(isset($_POST['date_rdv'])){
                     <div class="col-4">
                         <div class="col-2">
                             <label for="nom">Date de la consultaion</label>
-                            <input type="datetime-local" name="date_rdv" id="date_rdv"  value="<?echo $date?>" required>
+                            <input type="datetime-local" name="date_rdv" id="date_rdv"  value="<?= $date?>" required>
                             <label for="id_patient">Patient</label>
                             <select name="id_patient" id="id_patient" required>
                                 <?php
@@ -204,11 +204,11 @@ if(isset($_POST['date_rdv'])){
                 },
                 success: function(response){
                     if(response == 1){
-                        datepicker.setDate("<?echo $date?>");
+                        datepicker.setDate("<?= $date?>");
                         timepicker.setDate("00:30");
                         openModal();
                     }else if(response == 2){
-                        datepicker.setDate("<?echo $date?>");
+                        datepicker.setDate("<?= $date?>");
                         timepicker.setDate("00:30");
                         openModal();
                     }

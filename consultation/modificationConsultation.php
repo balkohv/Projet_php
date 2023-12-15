@@ -91,7 +91,7 @@ if(!isset($_GET['id']) and !isset($_POST['id'])){
                     <div class="col-4">
                         <div class="col-2">
                             <label for="nom">Date de la consultaion</label>
-                            <input type="datetime-local" name="date_rdv" id="date_rdv" value="<?echo $rdvs['date_rdv']?>"required readonly>
+                            <input type="datetime-local" name="date_rdv" id="date_rdv" value="<?= $rdvs['date_rdv']?>"required readonly>
                             <label for="id_patient">Patient</label>
                             <select name="id_patient" id="id_patient" required>
                                 <?php
@@ -124,9 +124,9 @@ if(!isset($_GET['id']) and !isset($_POST['id'])){
                             </select>
                         </div>
                     </div>
-                    <input type="hidden" name="id" value="<?echo $rdvs['id_medecin']?>">
+                    <input type="hidden" name="id" value="<?= $rdvs['id_medecin']?>">
                     <input type="submit" value="Envoyer" class="col-2 submit">
-                    <td><a class="delete col-2" href="suppressionConsultation.php?id=<?echo $rdvs['id_medecin']?>&date_rdv=<?echo $rdvs['date_rdv']?>">Supprimer</a></td>
+                    <td><a class="delete col-2" href="suppressionConsultation.php?id=<?= $rdvs['id_medecin']?>&date_rdv=<?= $rdvs['date_rdv']?>">Supprimer</a></td>
                 </form>
             </div>
         </div>
@@ -162,7 +162,7 @@ if(!isset($_GET['id']) and !isset($_POST['id'])){
             allowInput: false,
             minTime: "00:15",
             maxTime: "06:00",
-            defaultDate: "<?echo $rdvs['duree']?>",
+            defaultDate: "<?= $rdvs['duree']?>",
             time_24hr: true
         });
 
@@ -212,15 +212,15 @@ if(!isset($_GET['id']) and !isset($_POST['id'])){
                     id_medecin: id_medecin,
                     duree: $('#duree').val(),
                     type:"update",
-                    date_rdv_og: '<?echo $rdvs['date_rdv']?>',
+                    date_rdv_og: '<?= $rdvs['date_rdv']?>',
                 },
                 success: function(response){
                     if(response == 1){
-                        datepicker.setDate("<?echo $rdvs['date_rdv']?>");
+                        datepicker.setDate("<?= $rdvs['date_rdv']?>");
                         timepicker.setDate("00:30");
                         openModal();
                     }else if(response == 2){
-                        datepicker.setDate("<?echo $rdvs['date_rdv']?>");
+                        datepicker.setDate("<?= $rdvs['date_rdv']?>");
                         timepicker.setDate("00:30");
                         openModal();
                     }

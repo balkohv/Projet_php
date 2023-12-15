@@ -24,7 +24,7 @@ $req1 = $conn->prepare('SELECT * FROM usager WHERE archive = 0');
         </header>
         <?php include '../nav.html'; ?>
         <div class="col-12 justify-content-center">
-            <div class="dashboard" style="width:39vw;flex-direction:column;">
+            <div class="dashboard" style="width:700px;flex-direction:column;">
                 <h2>Visualiation usagers</h2>
                 <table cellspacing="0">
                     <thead>

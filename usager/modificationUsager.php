@@ -85,23 +85,23 @@ if(!isset($_GET['id']) and !isset($_POST['id'])){
                     <div class="col-4">
                         <div class="col-2">
                             <label for="nom">Nom</label>
-                            <input type="text" name="nom" id="nom" value="<?echo $usager['nom'] ?>" required>
+                            <input type="text" name="nom" id="nom" value="<?= $usager['nom'] ?>" required>
                             <label for="prenom">Prénom</label>
-                            <input type="text" name="prenom" id="prenom" value="<?echo $usager['prenom'] ?>" required>
+                            <input type="text" name="prenom" id="prenom" value="<?= $usager['prenom'] ?>" required>
                             <label for="adresse">adresse</label>
-                            <input type="text" name="adresse" id="adresse" value="<?echo $usager['adresse'] ?>" required>
+                            <input type="text" name="adresse" id="adresse" value="<?= $usager['adresse'] ?>" required>
                             <label for="cp">Code postal</label>
-                            <input type="text" name="cp" id="cp" value="<?echo $usager['cp'] ?>" required>
+                            <input type="text" name="cp" id="cp" value="<?= $usager['cp'] ?>" required>
                         </div>
                         <div class="col-2">
                             <label for="ville">Ville</label>
-                            <input type="text" name="ville" id="ville" value="<?echo $usager['ville'] ?>" required>
+                            <input type="text" name="ville" id="ville" value="<?= $usager['ville'] ?>" required>
                             <label for="dateN">Date de naissance</label>
-                            <input type="date" name="dateN" id="dateN" value="<?echo $usager['date_naissance'] ?>" required>
+                            <input type="date" name="dateN" id="dateN" value="<?= $usager['date_naissance'] ?>" required>
                             <label for="lieuN">lieu de naissance</label>
-                            <input type="text" name="lieuN" id="lieuN" value="<?echo $usager['lieu_naissance'] ?>" required>
+                            <input type="text" name="lieuN" id="lieuN" value="<?= $usager['lieu_naissance'] ?>" required>
                             <label for="secu">Numéro de sécurité social</label>
-                            <input type="text" name="secu" id="secu" value="<?echo $usager['num_secu'] ?>" required>
+                            <input type="text" name="secu" id="secu" value="<?= $usager['num_secu'] ?>" required>
                             <label for="id_medecin">Medecin</label>
                             <select name="id_medecin" id="id_medecin">
                                 <?php
@@ -118,9 +118,9 @@ if(!isset($_GET['id']) and !isset($_POST['id'])){
                             </select>
                         </div>
                     </div>
-                    <input type="hidden" name="id" value="<?echo $id?>">
+                    <input type="hidden" name="id" value="<?= $id?>">
                     <input type="submit" value="Envoyer" class="col-2 submit">
-                    <td><a class="delete col-2" href="suppressionUsager.php?id=<?echo $usager['id_usager']?>">Supprimer</a></td>
+                    <td><a class="delete col-2" href="suppressionUsager.php?id=<?= $usager['id_usager']?>">Supprimer</a></td>
                 </form>
             </div>
         </div>

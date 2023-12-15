@@ -74,16 +74,16 @@ if(!isset($_GET['id']) and !isset($_POST['id'])){
                                 <option value="Mme" <?php if($medecin['civilite']=='Mme' ){echo 'selected';}?>>Mme</option>
                             </select>
                             <label for="nom">Nom</label>
-                            <input  type="text" name="nom" id="nom"  value='<?echo $medecin['nom'] ?>' required>
+                            <input  type="text" name="nom" id="nom"  value='<?= $medecin['nom'] ?>' required>
                         </div>
                         <div class="col-2">
                             <label for="prenom">Prénom</label>
-                            <input type="text" name="prenom" id="prenom" value='<?echo $medecin['prenom'] ?>' required>
+                            <input type="text" name="prenom" id="prenom" value='<?= $medecin['prenom'] ?>' required>
                         </div>
                         <input name="id" type="hidden" value="<?php echo $medecin['id_medecin'] ?>">
                     </div>
                     <input type="submit" value="Envoyer" class="col-2 submit">
-                    <td><a class="delete col-2" href="suppressionMedecin.php?id=<?echo $medecin['id_medecin']?>">Supprimer</a></td>
+                    <td><a class="delete col-2" href="suppressionMedecin.php?id=<?= $medecin['id_medecin']?>">Supprimer</a></td>
                 </form>
             </div>
         </div>
