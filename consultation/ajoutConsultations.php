@@ -7,12 +7,12 @@
  catch (Exception $e)
  {
     die('Erreur : ' . $e->getMessage());
- }
+ }/* 
 $date = new DateTime();
 $minutes = $date->format('i');
 $roundedMinutes = ceil($minutes / 15) * 15;
 $date->setTime($date->format('H'), $roundedMinutes);
-$date=$date->format('Y-m-d H:i:s'); 
+$date=$date->format('Y-m-d H:i:s');  */
 
 if(isset($_POST['date_rdv'])){
     $date_rdv = new DateTime($_POST['date_rdv']);

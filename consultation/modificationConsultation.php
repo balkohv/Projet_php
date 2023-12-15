@@ -32,7 +32,7 @@ if(!isset($_GET['id']) and !isset($_POST['id'])){
         $duree = $_POST['duree'];
         $patient = $_POST['id_patient'];
         $medecin=$_POST['id_medecin'];
-        $id_medecin=$_POST['id_medecin'];
+        //$id_medecin=$_POST['id_medecin'];
         $req1 = $conn->prepare('UPDATE rdv set date_rdv = :date_rdv, duree = :duree, id_medecin = :id_medecin, id_usager = :id_usager WHERE date_rdv= :daterdv1 AND id_medecin = :id1');
 
             if (!$req1){
@@ -60,7 +60,7 @@ if(!isset($_GET['id']) and !isset($_POST['id'])){
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>modifier un usager</title>
+        <title>modifier une consultation</title>
         <link rel="stylesheet" href="../style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     </head>

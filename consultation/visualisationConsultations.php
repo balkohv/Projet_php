@@ -19,7 +19,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>visualiser les medecins</title>
+        <title>visualiser les consultations</title>
         <link rel="stylesheet" href="../style.css">
     </head>
     <body>
@@ -73,7 +73,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
+                        <?php   
                             if(isset($_GET['id_medecin']) and $_GET['id_medecin'] != 0){
                                 $req1 = $conn->prepare('SELECT * FROM rdv where date_rdv> :daterdv and date_rdv < :daterdv2 and id_medecin = :id_medecin');
                                 $req1->execute(
@@ -103,7 +103,7 @@
                                 $now->modify('+' . explode(":",$rdv['duree'])[1] . ' minutes');
                                 $minutefin = $now->format('i');
                                 $heurefin = $now->format('H');
-                                $duree = $rdv['duree'];
+                               // $duree = $rdv['duree'];
                                 //-----------------------------------------recuperation medecin------------------------------------//
                                 $reqSelMedecin = $conn->prepare('SELECT * FROM medecin where id_medecin = :id');
                                 $reqSelMedecin->execute(array(
@@ -111,7 +111,7 @@
                                 ));
                                 $medecin = $reqSelMedecin->fetch();
                                 //-----------------------------------------ecriture ligne------------------------------------//
-                                echo '<tr id="'.$rdv['date_rdv'].'+'.$rdv['id_medecin'].'" class="row consultation" title="De '.$heuredebut.'h'.$minuteDebut.'m a '.$heurefin.'h'.$minutefin.'m">';
+                                echo '<tr id="'.$rdv['date_rdv'].'+'.$rdv['id_medecin'].'" class="row consultation" title="De '.$heuredebut.'h'.$minuteDebut.'m à '.$heurefin.'h'.$minutefin.'m">';
                                 echo '<td>'.$medecin['civilite'].' '.$medecin['nom'].', '.$medecin['prenom'].'</td>';
                                 for ($i = 8;$i <= 18 ; $i++) {// ecriture du "trait" sur la ligne 
                                     if($heuredebut < $i and $heurefin > $i){
