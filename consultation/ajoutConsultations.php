@@ -7,12 +7,12 @@
  catch (Exception $e)
  {
     die('Erreur : ' . $e->getMessage());
- }/* 
+ }
 $date = new DateTime();
 $minutes = $date->format('i');
 $roundedMinutes = ceil($minutes / 15) * 15;
 $date->setTime($date->format('H'), $roundedMinutes);
-$date=$date->format('Y-m-d H:i:s');  */
+$date=$date->format('Y-m-d H:i:s');  
 
 if(isset($_POST['date_rdv'])){
     $date_rdv = new DateTime($_POST['date_rdv']);
@@ -43,19 +43,24 @@ if(isset($_POST['date_rdv'])){
         if (!$req1){
             die('Erreur : ' . $req1.errorInfo());
         }
-
+    try{
         $req1->execute(array(
             'date_rdv' => $date_rdv,
             'duree' => $duree,
             'id_medecin' => $medecin,
             'id_usager' => $patient,
         ));
+    }catch(Exception $e){
+        header("location: ajoutConsultations.php?error=1");
+        exit();
+    }
     if($req1){
         header("location: ../index.php");
     }else{
         echo 'query error: '. mysqli_error($conn);
     }
 }
+$now = new DateTime('now');
 
 ?>
 <html>
@@ -81,10 +86,7 @@ if(isset($_POST['date_rdv'])){
                 ?>
             </div>
         </div>
-        <header>
-            <h1>Projet 1</h1>
-        </header>
-        <?php include '../nav.html'; ?>
+        <?php include '../nav.php'; ?>
         <div class="col-12 justify-content-center">
             <div class="dashboard" style="width:39vw;">
                 <h2>Ajouter une consultation</h2>

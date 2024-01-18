@@ -9,7 +9,7 @@
     die('Erreur : ' . $e->getMessage());
  }
 
-$req1 = $conn->prepare('SELECT * FROM usager WHERE archive = 0');
+$usagers = $conn->query('SELECT * FROM usager WHERE archive = 0');
 
 ?>
 <html>
@@ -19,10 +19,7 @@ $req1 = $conn->prepare('SELECT * FROM usager WHERE archive = 0');
         <link rel="stylesheet" href="../style.css">
     </head>
     <body>
-        <header>
-            <h1>Projet 1</h1>
-        </header>
-        <?php include '../nav.html'; ?>
+        <?php include '../nav.php'; ?>
         <div class="col-12 justify-content-center">
             <div class="dashboard" style="width:700px;flex-direction:column;">
                 <h2>Visualiation usagers</h2>
@@ -42,8 +39,7 @@ $req1 = $conn->prepare('SELECT * FROM usager WHERE archive = 0');
                     </thead>
                     <tbody>
                         <?php
-                            $req1->execute();
-                            while($usager = $req1->fetch()){
+                            while($usager = $usagers->fetch()){
                                 if($usager['id_medecin'] != NULL){
                                     $req1 = $conn->prepare('SELECT * FROM medecin WHERE id_medecin = :id AND archive = 0');
                                     $req1->execute(array(

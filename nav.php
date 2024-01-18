@@ -1,3 +1,13 @@
+<?php
+if(!isset($_COOKIE['user'])){
+    header("location: ../login.php");
+    var_dump($_COOKIE['user']);
+}
+?>
+
+<header>
+    <h1>MediCare</h1>
+</header>
 <nav>
     <ul class="nav-bar">
         <li>
@@ -25,6 +35,11 @@
             <ul>
                 <li class="nav justify-content-center"><a>Statistiques</a></li>
                 <li class="nav justify-content-center"><a href="../statistiques/visualisationStatistiques.php">Visualisation Statistiques</a></li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li class="nav justify-content-center"><a href="../logout.php">Déconnexion</a></li>
             </ul>
         </li>
     </ul>

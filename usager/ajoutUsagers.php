@@ -17,13 +17,17 @@ if(isset($_POST['nom'])){
     $ville = $_POST['ville'];
     $dateN = $_POST['dateN'];
     $lieuN = $_POST['lieuN'];
+    $dateOfBirth = new DateTime($_POST['dateN']);
+    $currentDate = new DateTime();
+    $age = $currentDate->diff($dateOfBirth)->y;
+
     $secu = $_POST['secu'];
     if(isset($_POST['id_medecin']) && $_POST['id_medecin'] != 0){
         $medecin=$_POST['id_medecin'];
     }else{
         $medecin=NULL;
     }
-    $req1 = $conn->prepare('INSERT INTO usager(num_secu, nom, prenom,civilite, cp, ville, adresse, date_naissance, lieu_naissance, id_medecin) VALUES(:num_secu, :nom, :prenom, :civilite, :cp, :ville, :adresse, :date_naissance, :lieu_naissance, :id_medecin)');
+    $req1 = $conn->prepare('INSERT INTO usager(num_secu, nom, prenom, civilite, cp, ville, adresse, date_naissance, age, lieu_naissance, id_medecin) VALUES(:num_secu, :nom, :prenom, :civilite, :cp, :ville, :adresse, :date_naissance, :age, :lieu_naissance, :id_medecin)');
 
         if (!$req1){
             die('Erreur : ' . $req1.errorInfo());
@@ -38,6 +42,7 @@ if(isset($_POST['nom'])){
             'ville' => $ville,
             'adresse' => $adresse,
             'date_naissance' => $dateN,
+            'age' => $age,
             'lieu_naissance' => $lieuN,
             'id_medecin' => $medecin,
         ));
@@ -56,12 +61,8 @@ if(isset($_POST['nom'])){
         <title>Ajouter un usager</title>
         <link rel="stylesheet" href="../style.css">
     </head>
-    <body>
-        <header>
-            <h1>Projet 1</h1>
-        </header>
-        
-        <?php include '../nav.html'; ?>
+    <body>        
+        <?php include '../nav.php'; ?>
         <div class="col-12 justify-content-center">
             <div class="dashboard" style="width:39vw;">
                 <h2>Ajouter un usager</h2>
@@ -71,7 +72,7 @@ if(isset($_POST['nom'])){
                             <label for="nom">Nom</label>
                             <input type="text" name="nom" id="nom" required>
                             <label for="prenom">Prénom</label>
-                            <input type="text" name="nom" id="nom" required>
+                            <input type="text" name="prenom" id="prenom" required>
                             <label for="prenom">Civilité</label>
                             <select name="civilite" id="civilite">
                                 <option value="M">M</option>

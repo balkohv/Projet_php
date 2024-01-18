@@ -38,10 +38,7 @@ if(isset($_POST['civilite'])){
         <link rel="stylesheet" href="../style.css">
     </head>
     <body>
-        <header>
-            <h1>Projet 1</h1>
-        </header>
-        <?php include '../nav.html'; ?>
+        <?php include '../nav.php'; ?>
         <div class="col-12 justify-content-center">
             <div class="dashboard" style="width:39vw;">
                 <h2>Ajouter un medecin</h2>

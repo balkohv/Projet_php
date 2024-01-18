@@ -19,10 +19,7 @@ $req1 = $conn->prepare('SELECT * FROM medecin WHERE archive = 0 ');
         <link rel="stylesheet" href="../style.css">
     </head>
     <body>
-        <header>
-            <h1>Projet 1</h1>
-        </header>
-        <?php include '../nav.html'; ?>
+        <?php include '../nav.php'; ?>
         <div class="col-12 justify-content-center">
             <div class="dashboard" style="width:39vw;flex-direction:column;">
                 <h2>Visualiation medecins</h2>
